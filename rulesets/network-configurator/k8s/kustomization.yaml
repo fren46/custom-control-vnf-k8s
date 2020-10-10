@@ -1,0 +1,5 @@
+commonLabels:
+  airspot.krules.dev/ruleset: network-configurator
+resources:
+- service.yaml
+- triggers.yaml

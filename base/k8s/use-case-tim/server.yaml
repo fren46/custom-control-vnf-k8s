@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-server
+  namespace: default
+  labels:
+    app: server
+spec:
+  selector:
+    matchLabels:
+      app: server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: server
+      annotations:
+        k8s.v1.cni.cncf.io/networks: fw-sv-macvlan-conf
+    spec:
+      containers:
+        - name: node-server
+          image: fvalente95/nginx-server:0.3
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          ports:
+          - containerPort: 5000
+            name: server
+            protocol: TCP
+

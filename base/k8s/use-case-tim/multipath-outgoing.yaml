@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multipath-outgoing
+  namespace: default
+  labels:
+    app: multipath
+spec:
+  selector:
+    matchLabels:
+      app: multipath
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: multipath
+      annotations:
+        k8s.v1.cni.cncf.io/networks: lb-fw-macvlan-conf, cl-lb-macvlan-conf
+    spec:
+      containers:
+      - name: multipath
+        image: fvalente95/curl-and-iproute2
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
+        command: ['/bin/sh', '-c', 'sleep infinity']
+

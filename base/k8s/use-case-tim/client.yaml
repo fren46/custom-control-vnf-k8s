@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  namespace: default
+  labels:
+    app: client
+spec:
+  selector:
+    matchLabels:
+      app: client
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: client
+      annotations:
+        k8s.v1.cni.cncf.io/networks: cl-lb-macvlan-conf
+    spec:
+      containers:
+      - name: client
+        image: fvalente95/curl-and-iproute2
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
+        command: ['/bin/sh', '-c', 'sleep infinity']
+      terminationGracePeriodSeconds: 0
+

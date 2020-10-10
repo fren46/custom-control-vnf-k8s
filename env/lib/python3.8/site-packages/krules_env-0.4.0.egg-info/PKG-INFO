@@ -1,0 +1,23 @@
+Metadata-Version: 1.1
+Name: krules-env
+Version: 0.4.0
+Summary: KRules environment base package
+Home-page: https://github.com/airspot-dev/krules-env
+Author: Alberto Degli Esposti
+Author-email: alberto@arispot.tech
+License: Apache Licence 2.0
+Description: # krules-env
+        
+        This module is mainly intended for the setup of different environments in the context of a basic image.
+        
+        KRules is a project in progress and we are working hard on a first widely usable version.
+        
+        Exhaustive documentation has not yet been released.
+        
+        If you are interested in getting an idea of the project you can meanwhile take a look at the [overview](https://github.com/airspot-dev/krules-doc/blob/master/OVERVIEW.md) document in which the general concepts are explained.
+        
+        Do not hesitate to [contact us](mailto:info@airspot.tech) if you are interested in further information.
+Keywords: krules rules engine
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: Apache Software License

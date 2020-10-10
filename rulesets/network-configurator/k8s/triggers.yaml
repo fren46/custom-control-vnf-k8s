@@ -1,0 +1,14 @@
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: on-startup
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: startup
+  subscriber:
+    ref:
+      apiVersion: v1
+      kind: Service
+      name: network-configurator

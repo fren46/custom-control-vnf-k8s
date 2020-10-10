@@ -1,0 +1,5 @@
+commonLabels:
+  airspot.krules.dev/ruleset: on-firewall-status-change
+resources:
+- service.yaml
+- triggers.yaml

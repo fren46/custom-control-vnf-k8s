@@ -1,0 +1,5 @@
+commonLabels:
+  airspot.krules.dev/ruleset: multus-ifaces-annotator
+resources:
+- service.yaml
+- triggers.yaml

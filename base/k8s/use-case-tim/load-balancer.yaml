@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-balancer
+  namespace: default
+  labels:
+    app: load-balancer
+spec:
+  selector:
+    matchLabels:
+      app: load-balancer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: load-balancer
+      annotations:
+        k8s.v1.cni.cncf.io/networks: lb-fw-macvlan-conf, cl-lb-macvlan-conf
+    spec:
+      containers:
+        - name: lb-sample
+          image: fvalente95/nginxbalancer:0.2
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]

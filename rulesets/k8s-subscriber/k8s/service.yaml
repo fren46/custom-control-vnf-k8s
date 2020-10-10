@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-subscriber
+  labels:
+    airspot.krules.dev/type: ruleset
+    airspot.krules.dev/ruleset: k8s-subscriber
+spec:
+  selector:
+    airspot.krules.dev/type: ruleset
+    airspot.krules.dev/ruleset: k8s-subscriber
+  ports:
+    - port: 80
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-subscriber
+  labels:
+    airspot.krules.dev/type: ruleset
+    airspot.krules.dev/ruleset: k8s-subscriber
+spec:
+  selector:
+    matchLabels:
+      airspot.krules.dev/type: ruleset
+      airspot.krules.dev/ruleset: k8s-subscriber
+  replicas: 1
+  template:
+    metadata:
+      name: k8s-subscriber
+      labels:
+        airspot.krules.dev/type: ruleset
+        airspot.krules.dev/ruleset: k8s-subscriber
+    spec:
+      containers:
+        - name: ruleset
+      #- image: /use-case-tim-k8s-subscriber:0.1.0

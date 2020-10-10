@@ -1,0 +1,5 @@
+commonLabels:
+  airspot.krules.dev/ruleset: k8s-events-notifier
+resources:
+- service.yaml
+- triggers.yaml

@@ -1,0 +1,5 @@
+commonLabels:
+  airspot.krules.dev/ruleset: k8s-subscriber
+resources:
+- service.yaml
+- apiserversource.yaml

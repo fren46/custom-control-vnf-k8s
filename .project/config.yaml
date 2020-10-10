@@ -1,0 +1,6 @@
+profiles:
+  default:
+    docker_registry: docker.io/fvalente95
+    namespace: default
+project:
+  name: use-case-tim

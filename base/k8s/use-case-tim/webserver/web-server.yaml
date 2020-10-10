@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-server
+spec:
+  selector:
+    matchLabels:
+      app: web-server-example
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-server-example
+    spec:
+      containers:
+        - name: web-server
+          image: fvalente95/web-server-python:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-server-service
+spec:
+  selector:
+    app: web-server-example
+  type: NodePort
+  ports:
+  # Default port used by the image
+  - name: http
+    port: 80
+    protocol: TCP

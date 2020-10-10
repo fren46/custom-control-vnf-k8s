@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firewall
+  namespace: default
+  labels:
+    app: firewall
+    istio-injection: disabled
+spec:
+  selector:
+    matchLabels:
+      app: firewall
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: firewall
+        istio-injection: disabled
+      annotations:
+        k8s.v1.cni.cncf.io/networks: lb-fw-macvlan-conf, fw-sv-macvlan-conf
+    spec:
+      containers:
+        - name: firewall-sample
+          image: fvalente95/firewall-sample:1.5
+          env:
+            - name: DENYLIST
+              value: "10.16.0.0 172.100.0.0"
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          command: ['/bin/sh', '-c', 'sleep infinity']

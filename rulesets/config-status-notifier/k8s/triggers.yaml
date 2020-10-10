@@ -1,0 +1,15 @@
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: on-net-config-status-change
+spec:
+  broker: default
+  filter:
+    attributes:
+      resourcetype: pods
+      type: k8s.resource.update
+  subscriber:
+    ref:
+      apiVersion: v1
+      kind: Service
+      name: config-status-notifier

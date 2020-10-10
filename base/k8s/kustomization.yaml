@@ -1,0 +1,8 @@
+resources:
+- config-krules.yaml
+- brokers.yaml
+- event-display.yaml
+- triggers.yaml
+- config-krules-subjects-redis.yaml
+- config-slack-webhooks.yaml
+- service-account.yaml

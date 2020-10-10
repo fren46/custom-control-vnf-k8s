@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-status-notifier
+  labels:
+    airspot.krules.dev/type: ruleset
+spec:
+  selector:
+    airspot.krules.dev/ruleset: config-status-notifier
+  ports:
+    - port: 80
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-status-notifier
+  labels:
+    airspot.krules.dev/type: ruleset
+spec:
+  selector:
+    matchLabels:
+      airspot.krules.dev/ruleset: config-status-notifier
+  replicas: 1
+  template:
+    metadata:
+      name: config-status-notifier
+      labels:
+        airspot.krules.dev/type: ruleset
+        airspot.krules.dev/ruleset: config-status-notifier
+    spec:
+      containers:
+        - name: ruleset

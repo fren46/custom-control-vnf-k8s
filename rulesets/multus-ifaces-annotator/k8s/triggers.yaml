@@ -1,0 +1,70 @@
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: multus-trigger-add
+spec:
+  broker: default
+  filter:
+    attributes:
+        resourcetype: pods
+        type: k8s.resource.add
+  subscriber:
+    ref:
+      apiVersion: v1
+      kind: Service
+      name: multus-ifaces-annotator
+
+---
+
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: multus-trigger-update
+spec:
+  broker: default
+  filter:
+    attributes:
+        resourcetype: pods
+        type: k8s.resource.update
+  subscriber:
+    ref:
+      apiVersion: v1
+      kind: Service
+      name: multus-ifaces-annotator
+
+---
+
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: multus-trigger-delete
+spec:
+  broker: default
+  filter:
+    attributes:
+        resourcetype: pods
+        type: k8s.resource.delete
+  subscriber:
+    ref:
+      apiVersion: v1
+      kind: Service
+      name: multus-ifaces-annotator
+
+
+---
+
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: multus-trigger-detector
+spec:
+  broker: default
+  filter:
+    attributes:
+        resourcetype: pods
+        type: k8s.resource.detector
+  subscriber:
+    ref:
+      apiVersion: v1
+      kind: Service
+      name: multus-ifaces-annotator

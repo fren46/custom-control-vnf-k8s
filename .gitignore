@@ -1,0 +1,4 @@
+.project/workspace.yaml
+*/.lastResources
+rulesets/**/Dockerfile
+base/k8s/config-slack-webhooks.yaml

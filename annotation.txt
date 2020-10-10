@@ -1,0 +1,29 @@
+k8s.v1.cni.cncf.io/networks: lb-fw-macvlan-conf, fw-sv-macvlan-conf
+    k8s.v1.cni.cncf.io/networks-status: |-
+      [{
+          "name": "kindnet",
+          "interface": "eth0",
+          "ips": [
+              "10.244.0.50"
+          ],
+          "mac": "02:62:cb:88:5d:30",
+          "default": true,
+          "dns": {}
+      },{
+          "name": "lb-fw-macvlan-conf",
+          "interface": "net1",
+          "ips": [
+              "192.168.1.101"
+          ],
+          "mac": "d6:b8:81:df:53:b5",
+          "dns": {}
+      },{
+          "name": "fw-sv-macvlan-conf",
+          "interface": "net2",
+          "ips": [
+              "192.168.3.87"
+          ],
+          "mac": "b6:89:17:ab:ec:e3",
+          "dns": {}
+      }]
+

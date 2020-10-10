@@ -1,0 +1,17 @@
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: on-approval-status-change
+spec:
+  broker: default
+  filter:
+    attributes:
+      
+      type: subject-property-changed
+      propertyname: approval_status
+      
+  subscriber:
+    ref:
+      apiVersion: v1
+      kind: Service
+      name: on-firewall-status-change
