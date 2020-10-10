@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-slack-webhooks
+data:
+  config_slack_webhooks.yaml: |
+    kr-k8s-lab-clusterevents:
